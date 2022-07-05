@@ -61,7 +61,7 @@ class create_cross(data.Dataset):
 
         if self.train:
             if cross.sum() > 0:
-                index_=random.choice(np.where(cross>0)[1])
+                index_=random.choice(np.where(cross>0)[0])
             else:
                 index_ = index
         else:
