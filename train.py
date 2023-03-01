@@ -125,7 +125,7 @@ for epoch in range(opt.max_epoch):
 
 
         optimizer.zero_grad()
-        (loss1+loss1_+0.1*loss_align).backward()
+        (loss1+0.1*loss1_+0.1*loss_align).backward()
         optimizer.step()
 
         total+=label1.size(0)
