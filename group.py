@@ -10,16 +10,22 @@ import h5py
 
 
 
-data_root = '/home/kz/dataset/BratsTrain_2D_2019/HGG'
+data_root1 = '/home/kz/dataset/BratsTrain_2D_2019/HGG'
+data_root2 = '/home/kz/dataset/BratsTrain_2D_2019/LGG'
 
 
 
-datas = [os.path.join(data_root, png) for png in os.listdir(data_root)]
+datas1 = [os.path.join(data_root1, png) for png in os.listdir(data_root1)]
 
-datas = sorted(datas, key=lambda x: (int(x.split('_')[-3].split('/')[-1]),
+datas1 = sorted(datas1, key=lambda x: (int(x.split('_')[-3].split('/')[-1]),
                                 int(x.split('_')[-1].split('.')[-2])) )
 
+datas2 = [os.path.join(data_root2, png) for png in os.listdir(data_root2)]
 
+datas2 = sorted(datas2, key=lambda x: (int(x.split('_')[-3].split('/')[-1]),
+                                int(x.split('_')[-1].split('.')[-2])) )
+
+datas = datas1[int(0.3* len(datas1)):int(1* len(datas1)):3]+datas2[int(0.3* len(datas2)):int(1* len(datas2)):3]
 
 a = torch.zeros(2,len(datas))
 
